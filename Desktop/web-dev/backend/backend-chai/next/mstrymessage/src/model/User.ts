@@ -14,33 +14,33 @@ const MessageSchema: Schema<Message> = new Schema({
   createdAt: {
     type: Date,
     required: true,
-    default: Date.now
+    default: Date.now,
   },
 });
 
-
 export interface User extends Document {
-    username: string;
-    email: string;
-    password: string;
-    verifyCode: string;
-    verifyCodeExpity: Date;
-    isAcceptingMessage: boolean;
-    message: Message[]
-  }
+  username: string;
+  email: string;
+  password: string;
+  verifyCode: string;
+  verifyCodeExpity: Date;
+  isAcceptingMessage: boolean;
+  message: Message[];
+}
 
-
-
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const UserSchema: Schema<User> = new Schema({
   username: {
     type: String,
-    required: [true, "Username is required"],
-    
+    required: [true, 'Username is required'],
+    trim: true,
+    unique: true,
   },
-  createdAt: {
-    type: Date,
-    required: true,
-    default: Date.now
+   email: {
+    type: String,
+    required: [true, 'Email is required'],
+    unique: true,
+    
   },
 });
 
